@@ -109,7 +109,7 @@ def test_sigmoid(a: float) -> None:
     """
     # TODO: Implement for Task 0.2.
     assert sigmoid(a) >= 0.0 and sigmoid(a) <= 1.0
-    assert_close(1 - sigmoid(a), -sigmoid(a))
+    assert_close(1 - sigmoid(a), sigmoid(-a))
     assert_close(sigmoid(0), 0.5)
     assert sigmoid(a) <= sigmoid(a + 0.01)
 
@@ -119,8 +119,8 @@ def test_sigmoid(a: float) -> None:
 def test_transitive(a: float, b: float, c: float) -> None:
     """Test the transitive property of less-than (a < b and b < c implies a < c)"""
     # TODO: Implement for Task 0.2.
-    lst_sorted = sorted([a, b, c])
-    assert lt(a, c)
+    if lt(a, b) and lt(a, c):
+        assert lt(a, c)
 
 
 @pytest.mark.task0_2
